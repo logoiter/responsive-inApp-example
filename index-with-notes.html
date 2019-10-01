@@ -1,146 +1,120 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title></title>
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+          />
     <style type="text/css">
       html {
-        /* normally the body font-size is set to 16, but moving it to 10 allows for easier calculations later on with rem units */
-        font-size: 10px !important;
-
-        /* if Avenir doesn't exist, it will fall-back to Lato, then Helvetica... etc.
-           the font choices may cause a slight difference in what the message looks like
-           on different devices, if a specific font doesn't exist on a device. */
-        font-family: Avenir, Lato, Helvetica, Arial, sans-serif;
-
-        line-height: 1.5rem;
+      /* normally the body font-size is set to 16, but moving it to 10 allows for easier calculations later on with rem units */
+      font-size: 10px !important;
+      /* if Avenir doesn't exist, it will fall-back to Lato, then Helvetica... etc.
+      the font choices may cause a slight difference in what the message looks like
+      on different devices, if a specific font doesn't exist on a device. */
+      font-family: Avenir, Lato, Helvetica, Arial, sans-serif;
+      line-height: 1.5rem;
       }
-
       body {
         /* setting the margin to 0 here removes the white border seen on the previous version of the template. */
         margin: 0;
-
         /* vh and vw are modern css units that stand for view-height and view-width. */
         height: 100vh;
         width: 100vw;
       }
-
       /* this template uses <p> tags as lines for the headline and body copy.
-         <p> tags come built in with some inherent margin that i am resetting here.
-         If more space is desired between the lines, simply change this margin, or add some padding. */
+      <p> tags come built in with some inherent margin that i am resetting here.
+      If more space is desired between the lines, simply change this margin, or add some padding. */
       p {
         margin: 0;
       }
-
       /* the  slightly opaque backdrop on which the modal sits*/
       .container {
         /* change the last value below for a more or less opaque background.
-           rgba(30, 30, 30, 1) would be entirly opaque, rgba(30, 30, 30, 0) entirely translucent */
+        rgba(30, 30, 30, 1) would be entirly opaque, rgba(30, 30, 30, 0) entirely translucent */
         background-color: rgba(30, 30, 30, 0.85);
-
         /* makes sure that the background covers the entire screen */
         width: 100%;
         height: 100%;
-
         /* the three rules below set the modal to show up in the center of the screen
-           'display: flex' affects any children of this element (in this case, only the modal).
-           'justify-content: center' sets those child elements to be centered horizontally.
-           'align-items: center' sets those child elements to be centered vertically.
+        'display: flex' affects any children of this element (in this case, only the modal).
+        'justify-content: center' sets those child elements to be centered horizontally.
+        'align-items: center' sets those child elements to be centered vertically.
         */
         display: flex;
         justify-content: center;
         align-items: center;
       }
-
       /* the modal itself */
       .modal {
         /* if the modal should appear higher or lower on the background rather than straight in the center...
-
-           higher:
-           margin-top: -10% (change percentage as needed)
-
-           lower:
-           margin-top: 10% (change percentage as needed)
+        higher:
+        margin-top: -10% (change percentage as needed)
+        lower:
+        margin-top: 10% (change percentage as needed)
         */
-
         /* the overflow: hidden rule makes sure that the top of the modal has rounded corners. */
         overflow: hidden;
         /* delete the border-radius rule to remove the rounded corners of the modal */
         border-radius: 10px;
-
         /* white backround for the modal body */
         background-color: rgba(255, 255, 255, 1);
-
         /*
-           position: relative is a necessary rule to make the clos-button appear where it does.
-           removing this rule will base the close-button-container's absolute position off of the body element,
-           rather than the modal. Remove it if you want the close button to appear outside of the modal itself.
+        position: relative is a necessary rule to make the clos-button appear where it does.
+        removing this rule will base the close-button-container's absolute position off of the body element,
+        rather than the modal. Remove it if you want the close button to appear outside of the modal itself.
         */
         position: relative;
-
         /*
-          the following rules set the width of the modal.
-          as they stand, the modal will, at most, ever be 320px wide.
-          This makes sure that it shows up the same regardless of the width of the device.
-
-          If it is desired to have a wider modal for larger screen sizes, you can do so using media queries.
-          I've written some below that will accomplish that task. Uncomment and edit as needed.
+        the following rules set the width of the modal.
+        as they stand, the modal will, at most, ever be 320px wide.
+        This makes sure that it shows up the same regardless of the width of the device.
+        If it is desired to have a wider modal for larger screen sizes, you can do so using media queries.
+        I've written some below that will accomplish that task. Uncomment and edit as needed.
         */
         width: 85%;
         max-width: 320px;
       }
-
       /* device width for different devices can be found here: https://www.mydevice.io/#compare-devices
-
       Phone width for Galaxy S6. S7. S8, S8+ is 360px
       /* @media  only screen and (width: 360px) {
-        .modal {
-          max-width: 340px;
-        }
+      .modal {
+      max-width: 340px;
       }
-
+      }
       Phone width for iphone 6, 6s, 7, 8, X, is 375px
       @media only screen and (min-width: 370px) and (max-width: 390px) {
-        .modal {
-          max-width: 350px;
-        }
+      .modal {
+      max-width: 350px;
       }
-
+      }
       */
-
       .image {
         /* sets the image to be as wide as its container */
         width: 100%;
       }
-
       .close-button-container {
         position: absolute;
         top: 5%;
         right: 5%;
       }
-
       .close-button-image {
         width: 3rem;
         height: 3rem;
       }
-
       .content {
         text-align: center;
       }
-
       .content-block {
         /* rem is like em, except that it will always base itself off of the root font-size. */
         /* to add more spacing between each content section... the headline, the body, the button... just change the padding */
         padding: 0.75rem 0;
       }
-
       .content-block:last-of-type {
         /* adds a little bit of extra padding to the last content-block (the button), so that everything looks even. */
         padding-bottom: 1.5rem;
       }
-
       .headline-copy {
         line-height: 1.25;
         /* 22.5px */
@@ -148,13 +122,11 @@
         font-weight: 600;
         color: rgba(12, 12, 12, 1);
       }
-
       .body-copy {
         /* 16px */
         font-size: 1.6rem;
         color: rgba(20, 20, 20, 1);
       }
-
       .cta-button {
         border-radius: 3rem;
         font-weight: 600;
@@ -163,61 +135,42 @@
         background-color: rgba(235, 4, 80, 1);
         padding: 0;
       }
-
       .cta-copy {
-        /* <a> tags are normally inline displayed elements. we need to make it a block so that we can set vertical patting */
+        /* <span> tags are normally inline displayed elements. we need to make it a block so that we can set vertical patting */
         display: block;
-
         /* translates to height 10px, width: 30px; */
         padding: 0.5rem 1.5rem;
-
         /* 16px */
         font-size: 1.6rem;
-
-        text-decoration: none;
+      }
+      .cta-copy a {
         color: rgba(255, 255, 255, 1);
+        text-decoration: none;
       }
     </style>
   </head>
   <body>
     <div class="container">
       <div class="modal">
-        <div class="image-container">
-          <img
-            class="image"
-            alt="Promo Image"
-            src="https://static.iterable.com/b9357a8471d64e26abf98b9bd864b36d/19-07-29-08-05_CRM-2045 BTS Seeker Promo-App.png"
-          />
+        <div class="image-container"><img class="image" alt="Promo Image" src="https://iterable.com/wp-content/uploads/2019/07/071219_In-App-Testing_768x512.png" />
         </div>
-        <div class="close-button-container">
-          <a class="close-button" href="itbl://">
-            <img
-              class="close-button-image"
-              alt="close this message"
-              src="https://d2axdqolvqmdvx.cloudfront.net/b828f4f7-b645-4a9e-a109-6290bc637dde/XButton3x.png"
-            />
-          </a>
+        <div class="close-button-container"><a class="close-button" href="itbl://"><img class="close-button-image" alt="close this message" src="https://d2axdqolvqmdvx.cloudfront.net/b828f4f7-b645-4a9e-a109-6290bc637dde/XButton3x.png" /> </a>
         </div>
         <div class="content">
           <div class="content-block headline-copy">
-            <p>Make life easier</p>
-            <p>Save 20% on Premium</p>
-            <!-- <p> add more paragraph tags for more lines </p> -->
-          </div>
+            <p>In App Promos
+            </p>
+            <p>made easy!
+            </p>
+            <!-- <p> add more paragraph tags for more lines </p> --></div>
           <div class="content-block body-copy">
-            <p>Send messages to caregivers.</p>
-            <p>Use code: 20EASY</p>
-            <!-- <p> add more paragraph tags for more lines </p> -->
-          </div>
+            <p>Check out our latest
+            </p>
+            <p>article on the blog here.
+            </p>
+            <!-- <p> add more paragraph tags for more lines </p> --></div>
           <div class="content-block cta-container">
-            <button class="cta-button">
-              <a
-                class="cta-copy"
-                href="https://fm6t4.app.goo.gl/?link=https://www.care.com/mwb/seeker/upgrade/pricingPlans?dlsrc%3Dunsafe&amp;amp;afl=https://www.care.com/mwb/seeker/upgrade/pricingPlans?dlsrc%3Dunsafe&amp;amp;ifl=https://www.care.com/mwb/seeker/upgrade/pricingPlans?dlsrc%3Dunsafe&amp;amp;apn=com.care.android.careview&amp;amp;ibi=com.care.iphone&amp;amp;isi=328453619&amp;amp;efr=1"
-                target="_blank"
-              >
-                Save now
-              </a>
+            <button class="cta-button"><span class="cta-copy"><a target="_blank" href="https://iterable.com/blog/test-in-app-promotions/">Read now</a></span>
             </button>
           </div>
         </div>
